@@ -1,0 +1,47 @@
+<MainScreen>:
+    GridLayout:
+        rows:3
+        Button:
+            on_release: 
+                app.root.current = "graphs"
+                root.manager.transition.direction = "left"
+        GridLayout:
+            cols:3
+            Button:
+                text: app.startButton.text
+                on_release:app.strBtn()
+            Button:
+                text: app.pauseButton.text
+                on_press: app.pauseBtn()
+            GridLayout:
+                rows: 2
+                Label:  
+                    text: app.myLabel.text
+                GridLayout:
+                    cols: 2
+                    Label:
+                        text: app.pauseText.text
+                    Label:
+                        text: app.totalPauseText.text
+        GridLayout:
+            cols:5
+            TextInput:
+                id: actInput
+                hint_text: "What's current activity?"
+            Button:
+                text: "Confirm"
+                on_release:app.actBtn()
+            Label:
+                text: "Number of pauses: " + app.pauseInfo.text
+            TextInput:
+                id: pauseActInput
+                hint_text: "What activity during last pause?"
+            Button:
+                text: "Confirm"
+                on_release:app.pauseActBtn()
+
+<Graphs>:
+    name:"graphs"
+    GridLayout:
+        Button:
+            on_release: app.root.current = "main"
